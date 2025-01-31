@@ -2,6 +2,9 @@ name: Vercel Production Deployment
 
 on:
   workflow_call:
+    secrets:
+      VERCEL_TOKEN:
+        required: true
 
 jobs:
   Deploy-Production:
@@ -20,11 +23,6 @@ jobs:
 
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: Run Database Migrations
-        run: pnpm prisma migrate deploy
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
       - name: Build Project Artifacts
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
