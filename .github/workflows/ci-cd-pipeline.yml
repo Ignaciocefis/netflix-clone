@@ -20,13 +20,13 @@ jobs:
     needs: commits-syntax-checker
     uses: ./.github/workflows/tests.yml
 
-  codacy:
-    needs: tests
-    uses: ./.github/workflows/codacy.yml
-
   sonar-cloud:
     needs: tests
     uses: ./.github/workflows/sonar-cloud.yml
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
+      SONAR_ORG: ${{ secrets.SONAR_ORG }}
 
   validate-main-branch:
     name: Validate Main Branch
@@ -39,4 +39,6 @@ jobs:
   deploy:
     needs: validate-main-branch
     uses: ./.github/workflows/deploy.yml
+    secrets:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
