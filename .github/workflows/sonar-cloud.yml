@@ -1,0 +1,29 @@
+name: SonarCloud Analysis
+
+on:
+  workflow_call:
+
+jobs:
+  sonarcloud:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Run SonarCloud Scanner
+        run: |
+          pnpm install -g sonarqube-scanner
+          sonar-scanner
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_PROJECT_KEY: your-org_your-project
+          SONAR_ORG: your-org
