@@ -17,14 +17,6 @@ jobs:
     needs: commits-syntax-checker
     uses: ./.github/workflows/tests.yml
 
-  sonar-cloud:
-    needs: tests
-    uses: ./.github/workflows/sonar-cloud.yml
-    secrets:
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
-      SONAR_ORG: ${{ secrets.SONAR_ORG }}
-
   codacy:
     needs: tests
     uses: ./.github/workflows/codacy.yml
@@ -32,7 +24,6 @@ jobs:
       CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
 
   validate-main-branch:
-    name: Validate Main Branch
     needs: tests
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
