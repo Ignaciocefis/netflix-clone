@@ -18,12 +18,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'pnpm'  # Cache para pnpm
+          cache: 'pnpm'  # Esto activa el cache, pero necesitamos instalar pnpm manualmente
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 8  # Asegúrate de usar una versión compatible
+          version: 8  # Ajusta la versión si es necesario
+          run_install: false  # Desactiva la instalación automática de dependencias (ya lo hacemos después)
 
       - name: Install Dependencies
         run: pnpm install
