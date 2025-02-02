@@ -20,7 +20,9 @@ jobs:
         run: npm install -g pnpm
         
       - name: Install dependencies
-        run: pnpm install
+        run: |
+          pnpm store prune
+          pnpm install
 
       - name: Run Tests
         run: pnpm test
