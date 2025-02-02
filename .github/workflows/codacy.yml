@@ -12,23 +12,22 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: Install pnpm
-        run: npm install -g pnpm
-
       - name: Install Dependencies
         run: pnpm install
+        env:
+          SHELL: /bin/bash
 
       - name: Run Codacy Analysis
         run: |
-          pnpm setup
           pnpm install -g codacy-coverage
           codacy-coverage < coverage/lcov.info
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          SHELL: /bin/bash
