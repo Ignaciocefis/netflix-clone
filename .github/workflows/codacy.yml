@@ -18,18 +18,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'pnpm'  # Esto activa el cache, pero necesitamos instalar pnpm manualmente
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 8  # Ajusta la versión si es necesario
-          run_install: false  # Desactiva la instalación automática de dependencias (ya lo hacemos después)
+          version: 8 
 
       - name: Install Dependencies
         run: pnpm install
-        env:
-          SHELL: /bin/bash
 
       - name: Run Codacy Analysis
         run: |
@@ -37,4 +33,3 @@ jobs:
           codacy-coverage < coverage/lcov.info
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
-          SHELL: /bin/bash
