@@ -11,6 +11,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Debug Environment Variable
+        run: echo "Token- $CODACY_PROJECT_TOKEN"
+        env:
+          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+
       - name: Checkout Code
         uses: actions/checkout@v3
 
@@ -27,9 +32,13 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
-      - name: Run Codacy Analysis
+      - name: Run tests with Jest and collect coverage
+        run: pnpm test
+  
+      - name: Upload coverage to Codacy
         run: |
-          pnpm install -g codacy-coverage
-          codacy-coverage < coverage/lcov.info
+          curl -Ls https://coverage.codacy.com/get.sh | bash
+          bash <(curl -Ls https://coverage.codacy.com/get.sh)
+          npx codacy-coverage --coverage-xml=coverage/lcov-report/lcov-report.xml --token=${{ secrets.CODACY_PROJECT_TOKEN }}
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}

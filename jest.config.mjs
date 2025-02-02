@@ -10,4 +10,14 @@ const customJestConfig = {
 
 };
 
-export default createJestConfig(customJestConfig);
+const jestConfig = {
+  collectCoverage: true, 
+  collectCoverageFrom: [
+    'pages/**/*.{js,ts,jsx,tsx}', 
+    'components/**/*.{js,ts,jsx,tsx}',
+  ],
+  coverageReporters: ['text', 'lcov', 'json'], 
+  coverageDirectory: './coverage',
+}
+
+export default createJestConfig(jestConfig)
