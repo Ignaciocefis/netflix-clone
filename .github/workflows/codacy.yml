@@ -18,10 +18,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'pnpm'
+          cache: 'pnpm'  # Cache para pnpm
 
       - name: Install pnpm
-        run: npm install -g pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8  # Asegúrate de usar una versión compatible
 
       - name: Install Dependencies
         run: pnpm install
