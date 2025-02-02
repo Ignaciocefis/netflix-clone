@@ -25,6 +25,12 @@ jobs:
       SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
       SONAR_ORG: ${{ secrets.SONAR_ORG }}
 
+  codacy:
+    needs: tests
+    uses: ./.github/workflows/codacy.yml
+    secrets:
+      CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+
   validate-main-branch:
     name: Validate Main Branch
     needs: tests
