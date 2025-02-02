@@ -27,6 +27,7 @@ jobs:
 
       - name: Run Codacy Analysis
         run: |
+          pnpm setup
           pnpm install -g codacy-coverage
           codacy-coverage < coverage/lcov.info
         env:
