@@ -39,6 +39,6 @@ jobs:
         run: |
           curl -Ls https://coverage.codacy.com/get.sh | bash
           bash <(curl -Ls https://coverage.codacy.com/get.sh)
-          npx codacy-coverage --coverage-xml=coverage/lcov-report/lcov-report.xml --token=${{ secrets.CODACY_PROJECT_TOKEN }}
+          /home/runner/.cache/codacy/coverage-reporter/14.0.7/codacy-coverage-reporter "report" --coverage-xml=coverage/lcov-report/lcov-report.xml --token=${{ secrets.CODACY_PROJECT_TOKEN }}
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
