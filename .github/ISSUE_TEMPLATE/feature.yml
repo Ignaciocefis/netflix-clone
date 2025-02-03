@@ -1,9 +1,7 @@
 name: "📦 feat: Nueva Funcionalidad"
-about: "Solicita una nueva funcionalidad para el proyecto"
-title: "[Feature]"
-labels: "feat"
-assignees: ""
-
+description: "Solicita una nueva funcionalidad para el proyecto."
+title: "[Feature] "
+labels: ["feat"]
 body:
   - type: markdown
     attributes:
@@ -11,20 +9,25 @@ body:
         # **📦 feat: Nueva Funcionalidad**
   
   - type: textarea
+    id: feature-description
     attributes:
-      label: "Descripción."
-      description: "Explica la nueva funcionalidad requerida y su impacto"
+      label: "Descripción de la Nueva Funcionalidad"
+      description: "Explica la nueva funcionalidad requerida y cómo impacta el proyecto."
     validations:
       required: true
 
   - type: textarea
+    id: affected-modules
     attributes:
-      label: "Modulos afectados"
-      description: "Lista de modulos afectados por la nueva funcionalidad."
+      label: "Módulos Afectados"
+      description: "Lista de los módulos afectados por la nueva funcionalidad."
     validations:
       required: true
 
   - type: textarea
+    id: additional-comments
     attributes:
-      label: "Comentarios adicionales"
-      description: "Cualquier comentario adicional que quieras agregar."
+      label: "Comentarios Adicionales"
+      description: "Cualquier comentario adicional que desees agregar sobre la nueva funcionalidad."
+    validations:
+      required: false
