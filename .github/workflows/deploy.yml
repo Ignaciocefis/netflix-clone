@@ -25,6 +25,9 @@ jobs:
       run: |
         pnpm store prune
         pnpm install
+
+    - name: Install Vercel CLI
+      run: npm install -g vercel
     
     - name: Pull Vercel Environment Information
       run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
