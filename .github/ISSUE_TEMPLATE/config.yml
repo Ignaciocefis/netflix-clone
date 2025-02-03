@@ -17,7 +17,7 @@ body:
       required: true
 
   - type: textarea
-    id: affected-modules
+    id: configuration-modules
     attributes:
       label: "Módulos Afectados"
       description: "Lista los módulos o áreas del proyecto que se verán afectados por el cambio de configuración."
@@ -25,7 +25,7 @@ body:
       required: true
 
   - type: textarea
-    id: additional-comments
+    id: configuration-comments
     attributes:
       label: "Comentarios Adicionales"
       description: "Añade cualquier contexto o comentario adicional que pueda ser útil para comprender mejor los cambios propuestos."
