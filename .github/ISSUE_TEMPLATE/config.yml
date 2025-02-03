@@ -12,19 +12,19 @@ body:
   
   - type: textarea
     attributes:
-        label: "Descripción."
-        description: "Explica los cambios de configuración requeridos y su impacto"
+      label: "Descripción."
+      description: "Explica los cambios de configuración requeridos y su impacto"
     validations:
-        required: true
+      required: true
 
   - type: textarea
-    atributes:
-        label: "Modulos afectados"
-        description: "Lista de modulos afectados por el cambio."
+    attributes:
+      label: "Modulos afectados"
+      description: "Lista de modulos afectados por el cambio."
     validations:
-        required: true
+      required: true
 
   - type: textarea
-    atributes:
-        label: "Comentarios adicionales"
-        description: "Cualquier comentario adicional que quieras agregar."
+    attributes:
+      label: "Comentarios adicionales"
+      description: "Cualquier comentario adicional que quieras agregar."

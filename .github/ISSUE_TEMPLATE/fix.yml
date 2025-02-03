@@ -12,26 +12,26 @@ body:
   
   - type: textarea
     attributes:
-        label: "Descripción."
-        description: "Explica el error que encontraste y su impacto"
+      label: "Descripción."
+      description: "Explica el error que encontraste y su impacto"
     validations:
-        required: true
+      required: true
 
   - type: textarea
-    atributes:
-        label: "Modulos afectados"
-        description: "Lista de modulos afectados por el error."
+    attributes:
+      label: "Modulos afectados"
+      description: "Lista de modulos afectados por el error."
     validations:
-        required: true
+      required: true
 
   - type: textarea
-    atributes:
-        label: "Pasos para reproducir"
-        description: "Lista de pasos para reproducir el error."
+    attributes:
+      label: "Pasos para reproducir"
+      description: "Lista de pasos para reproducir el error."
     validations:
-        required: true
+      required: true
 
   - type: textarea
-    atributes:
-        label: "Comentarios adicionales"
-        description: "Cualquier comentario adicional que quieras agregar."
+    attributes:
+      label: "Comentarios adicionales"
+      description: "Cualquier comentario adicional que quieras agregar."
