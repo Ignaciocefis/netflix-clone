@@ -1,26 +1,33 @@
 name: "⚙️ configuration: Cambios de Configuración"
-about: "Solicitar cambios en la configuración del proyecto"
-title: "[Chore]"
-labels: "configuration"
-assignees: ""
+description: "Solicitar cambios en la configuración del proyecto."
+title: "[Chore] "
+labels: ["configuration"]
 body:
   - type: markdown
     attributes:
       value: |
         # **⚙️ configuration: Cambios de Configuración**
+  
   - type: textarea
+    id: configuration-description
     attributes:
-      label: "Descripción."
-      description: "Explica los cambios de configuración requeridos y su impacto"
+      label: "Descripción de los Cambios"
+      description: "Explica los cambios de configuración requeridos y cómo impactan el proyecto."
     validations:
       required: true
+
   - type: textarea
+    id: affected-modules
     attributes:
-      label: "Modulos afectados"
-      description: "Lista de modulos afectados por el cambio."
+      label: "Módulos Afectados"
+      description: "Lista de los módulos afectados por el cambio de configuración."
     validations:
       required: true
+
   - type: textarea
+    id: additional-comments
     attributes:
-      label: "Comentarios adicionales"
-      description: "Cualquier comentario adicional que quieras agregar."
+      label: "Comentarios Adicionales"
+      description: "Cualquier comentario adicional que desees agregar sobre los cambios propuestos."
+    validations:
+      required: false
