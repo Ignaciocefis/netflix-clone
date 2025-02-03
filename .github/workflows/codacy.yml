@@ -8,7 +8,7 @@ on:
 
 jobs:
 
-  build:
+  codacy:
 
     runs-on: ubuntu-latest
 
@@ -36,17 +36,12 @@ jobs:
 
     - name: Test and coverage
       run: pnpm jest --coverage
-    
-    - name: Setup pnpm global bin directory
-      run: |
-        export SHELL=/bin/bash
-        pnpm setup
-
+  
     - name: Install Codacy Coverage Reporter
-      run: pnpm install -g codacy-coverage-reporter
+      run: pnpm install -g codacy-coverage
 
     - name: Upload coverage to Codacy
       run: |
-        pnpm codacy-coverage
+        bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage/lcov.info
       env:
         CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
