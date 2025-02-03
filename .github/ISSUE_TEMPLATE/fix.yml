@@ -1,9 +1,7 @@
 name: "🐛 fix: Corrección de Error"
-about: "Reportar un error en el proyecto"
-title: "[Fix]"
-labels: "fix"
-assignees: ""
-
+description: "Informa un error para ayudar a mejorar el proyecto."
+title: "[Fix] "
+labels: ["fix"]
 body:
   - type: markdown
     attributes:
@@ -11,27 +9,37 @@ body:
         # **🐛 fix: Corrección de Error**
   
   - type: textarea
+    id: error-description
     attributes:
-      label: "Descripción."
-      description: "Explica el error que encontraste y su impacto"
+      label: "Descripción del Error"
+      description: "Explica el error que encontraste y su impacto. Proporciona una descripción clara y concisa del problema."
     validations:
       required: true
 
   - type: textarea
+    id: affected-modules
     attributes:
-      label: "Modulos afectados"
-      description: "Lista de modulos afectados por el error."
+      label: "Módulos Afectados"
+      description: "Lista de los módulos afectados por el error."
     validations:
       required: true
 
   - type: textarea
+    id: reproduction-steps
     attributes:
-      label: "Pasos para reproducir"
-      description: "Lista de pasos para reproducir el error."
+      label: "Pasos para Reproducir"
+      description: "Escribe los pasos detallados para reproducir el error."
+      placeholder: |
+        1.
+        2.
+        3.
     validations:
       required: true
 
   - type: textarea
+    id: additional-comments
     attributes:
-      label: "Comentarios adicionales"
-      description: "Cualquier comentario adicional que quieras agregar."
+      label: "Comentarios Adicionales"
+      description: "Añade cualquier comentario adicional o contexto sobre el error."
+    validations:
+      required: false
