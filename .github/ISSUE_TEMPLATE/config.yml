@@ -9,22 +9,25 @@ body:
         # **⚙️ configuration: Cambios de Configuración**
 
   - type: textarea
+    id: configuration-description
     attributes:
       label: "Descripción del Cambio"
-      description: "Explica los cambios de configuración que se necesitan realizar y cómo impactan el proyecto."
+      description: "Explica los cambios de configuración necesarios y cómo impactan al proyecto en términos de funcionalidad, rendimiento, etc."
     validations:
       required: true
 
   - type: textarea
+    id: affected-modules
     attributes:
       label: "Módulos Afectados"
-      description: "Lista los módulos que se verán afectados por el cambio de configuración."
+      description: "Lista los módulos o áreas del proyecto que se verán afectados por el cambio de configuración."
     validations:
       required: true
 
   - type: textarea
+    id: additional-comments
     attributes:
       label: "Comentarios Adicionales"
-      description: "Añade cualquier comentario adicional o contexto sobre los cambios que deseas proponer."
+      description: "Añade cualquier contexto o comentario adicional que pueda ser útil para comprender mejor los cambios propuestos."
     validations:
       required: false
