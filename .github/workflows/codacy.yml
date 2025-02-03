@@ -1,4 +1,4 @@
-name: Codacy Analysis
+name: Codacy CI
 
 on:
   workflow_call:
@@ -7,44 +7,38 @@ on:
         required: true
 
 jobs:
-  codacy-analysis:
+
+  codacy:
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Debug Environment Variable
-        run: echo "Token- $CODACY_PROJECT_TOKEN"
-        env:
-          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+    - name: Debug Enviroment Variable
+      run: echo "Token- $CODACY_PROJECT_TOKEN"
+      env:
+        CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
 
-      - name: Checkout Code
-        uses: actions/checkout@v3
+    - name: Checkout Code
+      uses: actions/checkout@v2
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 18
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8 
+    - name: Install pnpm
+      run: npm install -g pnpm
+        
+    - name: Install dependencies
+      run: |
+        pnpm store prune
+        pnpm install
 
-      - name: Install Dependencies
-        run: pnpm install
+    - name: Test and coverage
+      run: pnpm jest --coverage
 
-      - name: Run tests with Jest and collect coverage
-        run: pnpm test
-
-      - name: Run codacy-coverage-reporter
-        uses: ./
-        with:
-          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-          coverage-reporter-version: 13.13.15
-  
-      - name: Upload coverage to Codacy
-        run: |
-          curl -Ls https://coverage.codacy.com/get.sh | bash
-          bash <(curl -Ls https://coverage.codacy.com/get.sh)
-          /home/runner/.cache/codacy/coverage-reporter/14.0.7/codacy-coverage-reporter "report" --coverage-xml=coverage/lcov-report/lcov-report.xml --token=${{ secrets.CODACY_PROJECT_TOKEN }}
-        env:
-          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+    - name: Upload coverage to Codacy
+      run: |
+        bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage/lcov.info
+      env:
+        CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
