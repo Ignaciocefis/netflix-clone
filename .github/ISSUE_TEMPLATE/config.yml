@@ -1,6 +1,5 @@
 name: " configuration: Cambios de Configuración"
 description: "Solicitar cambios en la configuración del proyecto."
-title: "[Chore] "
 labels: ["configuration"]
 body:
   - type: markdown
