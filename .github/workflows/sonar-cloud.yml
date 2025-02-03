@@ -1,42 +1,40 @@
-name: 
-  
+name: SonarCloud Analysis
+
 on:
- workflow_call:
-  secrets:
-    SONAR_TOKEN:
-      required: true
-    SONAR_PROJECT_KEY:
-      required: true
-    SONAR_ORG:
-      required: true
+  workflow_call:
+    secrets:
+      SONAR_TOKEN:
+        required: true
+      SONAR_PROJECT_KEY:
+        required: true
+      SONAR_ORG:
+        required: true
 
 jobs:
-  sonarqube:
-    name: SonarQube
+  sonarcloud:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 18
-
+      
       - name: Install pnpm
         run: npm install -g pnpm
-        
-      - name: Install dependencies
-        run: |
-          pnpm store prune
-          pnpm install
+
+      - name: Install Dependencies
+        run: pnpm install
 
       - name: Test and coverage
         run: pnpm jest --coverage
 
-      - name: Install SonarCloud Scanner
+      - name: Run SonarCloud Scanner
         run: |
-          npm install -g sonarqube-scanner
+          pnpm install -g sonarqube-scanner
           sonar-scanner
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
