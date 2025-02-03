@@ -3,11 +3,8 @@ name: CI/CD Pipeline
 on:
   push:
     branches: [main]
-    tags:
-      - 'v*'
   pull_request:
     branches: [main]
-    types: [opened, reopened, edited, review_requested, synchronize]
   release:
     types: [published]
 
@@ -20,8 +17,12 @@ jobs:
     needs: commits-syntax-checker
     uses: ./.github/workflows/tests.yml
 
+  codacy:
+    uses: ./.github/workflows/codacy.yml
+    secrets:
+      CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+
   sonar-cloud:
-    needs: tests
     uses: ./.github/workflows/sonar-cloud.yml
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -29,7 +30,6 @@ jobs:
       SONAR_ORG: ${{ secrets.SONAR_ORG }}
 
   validate-main-branch:
-    name: Validate Main Branch
     needs: tests
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'

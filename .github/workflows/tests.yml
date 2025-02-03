@@ -9,15 +9,20 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Install Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
           node-version: 18
 
-      - name: Install Dependencies
-        run: pnpm install
+      - name: Install pnpm
+        run: npm install -g pnpm
+        
+      - name: Install dependencies
+        run: |
+          pnpm store prune
+          pnpm install
 
       - name: Run Tests
         run: pnpm test
