@@ -18,13 +18,11 @@ jobs:
     uses: ./.github/workflows/tests.yml
 
   codacy:
-    needs: tests
     uses: ./.github/workflows/codacy.yml
     secrets:
       CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
 
   sonar-cloud:
-    needs: tests
     uses: ./.github/workflows/sonar-cloud.yml
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
