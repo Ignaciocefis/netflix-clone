@@ -37,6 +37,9 @@ jobs:
     - name: Test and coverage
       run: pnpm jest --coverage
 
+    - name: Install Codacy Coverage Reporter
+      run: pnpm install -g codacy-coverage-reporter
+
     - name: Upload coverage to Codacy
       run: |
         pnpm codacy-coverage
