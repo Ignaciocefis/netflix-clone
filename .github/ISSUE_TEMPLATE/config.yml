@@ -7,7 +7,6 @@ body:
     attributes:
       value: |
         # **⚙️ configuration: Cambios de Configuración**
-
   - type: textarea
     id: configuration-description
     attributes:
@@ -15,7 +14,6 @@ body:
       description: "Explica los cambios de configuración necesarios y cómo impactan al proyecto en términos de funcionalidad, rendimiento, etc."
     validations:
       required: true
-
   - type: textarea
     id: configuration-modules
     attributes:
@@ -23,7 +21,6 @@ body:
       description: "Lista los módulos o áreas del proyecto que se verán afectados por el cambio de configuración."
     validations:
       required: true
-
   - type: textarea
     id: configuration-comments
     attributes:
