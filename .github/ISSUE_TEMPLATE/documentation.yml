@@ -5,14 +5,14 @@ labels: "documentation"
 assignees: ""
 
 body:
-  -type: markdown
+  - type: markdown
     attributes:
       value: |
         # **📚 documentation: Actualización de Documentación**
 
   - type: textarea
     attributes:
-        label: "Descripción."
-        description: "Explica los cambios de documentación requeridos y su impacto"
+      label: "Descripción."
+      description: "Explica los cambios de documentación requeridos y su impacto"
     validations:
-        required: true
+      required: true
