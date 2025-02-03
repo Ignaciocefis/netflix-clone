@@ -18,6 +18,7 @@ jobs:
     uses: ./.github/workflows/tests.yml
 
   codacy:
+    needs: tests
     uses: ./.github/workflows/codacy.yml
     secrets:
       CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
