@@ -38,7 +38,9 @@ jobs:
       run: pnpm jest --coverage
     
     - name: Setup pnpm global bin directory
-      run: pnpm setup
+      run: |
+        export SHELL=/bin/bash
+        pnpm setup
 
     - name: Install Codacy Coverage Reporter
       run: pnpm install -g codacy-coverage-reporter
