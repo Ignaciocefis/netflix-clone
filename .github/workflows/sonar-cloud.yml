@@ -5,6 +5,10 @@ on:
   secrets:
     SONAR_TOKEN:
       required: true
+    SONAR_PROJECT_KEY:
+      required: true
+    SONAR_ORG:
+      required: true
 
 jobs:
   sonarqube:
@@ -34,3 +38,7 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v4
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
+          SONAR_ORGANIZATION: ${{ secrets.SONAR_ORG }}
+          SONAR_SCANNER_OPTS: "-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info"
+      
