@@ -7,17 +7,11 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['@testing-library/jest-dom'],
-
-};
-
-const jestConfig = {
-  collectCoverage: true, 
+  collectCoverage: true,
   collectCoverageFrom: [
-    'pages/**/*.{js,ts,jsx,tsx}', 
+    'pages/**/*.{js,ts,jsx,tsx}',
     'components/**/*.{js,ts,jsx,tsx}',
   ],
-  coverageReporters: ['text', 'lcov', 'json'], 
-  coverageDirectory: './coverage',
-}
+};
 
-export default createJestConfig(jestConfig)
+export default createJestConfig(customJestConfig);

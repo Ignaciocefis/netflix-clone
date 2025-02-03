@@ -34,6 +34,12 @@ jobs:
 
       - name: Run tests with Jest and collect coverage
         run: pnpm test
+
+      - name: Run codacy-coverage-reporter
+        uses: ./
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reporter-version: 13.13.15
   
       - name: Upload coverage to Codacy
         run: |
