@@ -1,4 +1,4 @@
-name: "⚙️ configuration: Cambios de Configuración"
+name: " configuration: Cambios de Configuración"
 description: "Solicitar cambios en la configuración del proyecto."
 title: "[Chore] "
 labels: ["configuration"]
@@ -6,4 +6,4 @@ body:
   - type: markdown
     attributes:
       value: |
-        # **⚙️ configuration: Cambios de Configuración**
+        # ** configuration: Cambios de Configuración**
