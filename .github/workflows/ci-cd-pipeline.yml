@@ -23,13 +23,6 @@ jobs:
     secrets:
       CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
 
-  sonar-cloud:
-    uses: ./.github/workflows/sonar-cloud.yml
-    secrets:
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
-      SONAR_ORG: ${{ secrets.SONAR_ORG }}
-
   validate-main-branch:
     needs: tests
     runs-on: ubuntu-latest
