@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Terms } from "./Terms";
 
 export default function LoginPage() {
+  const betis: string = "Betis";
   return (
     <div>
       <p className="text-3xl font-bold text-left mb-7">Iniciar sesión</p>
