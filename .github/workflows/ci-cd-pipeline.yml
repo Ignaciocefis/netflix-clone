@@ -9,12 +9,15 @@ on:
     types: [published]
 
 jobs:
-
   commits-syntax-checker:
     uses: ./.github/workflows/commits.yml
 
-  tests:
+  lint:
     needs: commits-syntax-checker
+    uses: ./.github/workflows/lint.yml
+
+  tests:
+    needs: lint
     uses: ./.github/workflows/tests.yml
 
   codacy:
@@ -35,4 +38,3 @@ jobs:
     uses: ./.github/workflows/deploy.yml
     secrets:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-
