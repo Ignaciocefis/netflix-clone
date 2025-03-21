@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
+import axios from "axios";
 import {
   Form,
   FormControl,
@@ -13,8 +14,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { z } from "zod";
 import { formSchema } from "./RegisterForm.form";
+import { toast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 export function RegisterForm() {
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -24,8 +29,20 @@ export function RegisterForm() {
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      await axios.post("/api/auth/register", values);
+      toast({
+        title: "Usuario creado correctamente",
+      });
+      router.push("/profiles");
+    } catch (error) {
+      toast({
+        title: "Error al crear el usuario",
+        variant: "destructive",
+      });
+      console.error(error);
+    }
   };
 
   return (
