@@ -11,10 +11,14 @@ on:
 jobs:
 
   commits-syntax-checker:
+    if: github.ref != 'refs/heads/main'
     uses: ./.github/workflows/commits.yml
 
+  lint:
+    uses: ./.github/workflows/lint.yml
+
   tests:
-    needs: commits-syntax-checker
+    needs: lint
     uses: ./.github/workflows/tests.yml
 
   codacy:
