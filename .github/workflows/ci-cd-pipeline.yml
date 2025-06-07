@@ -9,12 +9,12 @@ on:
     types: [published]
 
 jobs:
-
   commits-syntax-checker:
     if: github.ref != 'refs/heads/main'
     uses: ./.github/workflows/commits.yml
 
   lint:
+    needs: commits-syntax-checker
     uses: ./.github/workflows/lint.yml
 
   tests:
@@ -26,13 +26,6 @@ jobs:
     uses: ./.github/workflows/codacy.yml
     secrets:
       CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
-
-  sonar-cloud:
-    uses: ./.github/workflows/sonar-cloud.yml
-    secrets:
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      SONAR_PROJECT_KEY: ${{ secrets.SONAR_PROJECT_KEY }}
-      SONAR_ORG: ${{ secrets.SONAR_ORG }}
 
   validate-main-branch:
     needs: tests
@@ -46,4 +39,3 @@ jobs:
     uses: ./.github/workflows/deploy.yml
     secrets:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-
