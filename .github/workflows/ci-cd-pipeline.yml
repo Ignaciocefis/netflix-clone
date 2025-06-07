@@ -14,7 +14,6 @@ jobs:
     uses: ./.github/workflows/commits.yml
 
   lint:
-    needs: commits-syntax-checker
     uses: ./.github/workflows/lint.yml
 
   tests:
