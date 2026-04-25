@@ -15,6 +15,8 @@ export async function POST(request: Request){
       return new NextResponse("Email already exists", { status: 400 });
     }
 
+    console.log("Viva el Betis!!")
+
     const userCreated = await db.user.create({
       data: {
         email: email,
@@ -27,5 +29,4 @@ export async function POST(request: Request){
     console.error(error);
     return new NextResponse("Internal Error", { status: 500 });
   }
-
 }
